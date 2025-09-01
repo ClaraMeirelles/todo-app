@@ -2,17 +2,32 @@ import axios from "axios"
 
 const API_URL = "http://localhost:3000/tasks"
 
-export async function getTasks() {
-    const response = await axios.get(`${API_URL}`)
-    return response.data
+export function getTasks() {
+    return axios
+        .get(API_URL)
+        .then(response => response.data)
+        .catch(error => {
+            console.error("Erro ao buscar tasks:", error)
+            throw error
+        })
 }
 
-export async function createTask(title: string) {
-    const response = await axios.post(API_URL, { title })
-    return response.data
+export function createTask(title: string) {
+    return axios
+        .post(API_URL, { title })
+        .then(response => response.data)
+        .catch(error => {
+            console.error("Erro ao criar task:", error)
+            throw error
+        })
 }
 
-export async function markTaskAsDone(id: string) {
-    const response = await axios.patch(`${API_URL}/${id}/done`)
-    return response.data
+export function markTaskAsDone(id: string) {
+    return axios
+        .patch(`${API_URL}/${id}/done`)
+        .then(response => response.data)
+        .catch(error => {
+            console.error("Erro ao marcar task como feita:", error)
+            throw error
+        })
 }

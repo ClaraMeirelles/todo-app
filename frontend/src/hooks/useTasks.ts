@@ -22,7 +22,6 @@ export function useTasks() {
     const handleMarkAsDone = async (id: string) => {
         const updated = await markTaskAsDone(id)
         setTasks(prev => prev.map(t => (t.id === id ? updated : t)))
-        console.log("marcou", id)
     }
 
     return { tasks, loading, handleAddTask, handleMarkAsDone }
