@@ -29,7 +29,6 @@ describe("TasksService", () => {
     expect(task.id).toBeDefined()
   })
 
-
   it("should return all tasks", () => {
     service.create({ title: "Task 1" })
     service.create({ title: "Task 2" })
