@@ -4,7 +4,7 @@ import { CreateTaskDto } from "./dto/create-task.dto";
 
 @Injectable()
 export class TasksService {
-    private tasks: Task[] = []; // Armazenamento em memória
+    private tasks: Task[] = [];
 
     findAll(): Task[] {
         return this.tasks;
