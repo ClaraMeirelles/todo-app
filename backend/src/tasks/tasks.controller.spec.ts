@@ -33,11 +33,18 @@ describe("TasksService", () => {
   })
 
   it('should throw error when creating task without title', async () => {
-    const dto = { title: '' };
-    const createTaskDto = plainToInstance(CreateTaskDto, dto);
+    const dto = { title: '' }
+    const createTaskDto = plainToInstance(CreateTaskDto, dto)
 
-    await expect(validateOrReject(createTaskDto)).rejects.toBeDefined();
-  });
+    await expect(validateOrReject(createTaskDto)).rejects.toBeDefined()
+  })
+
+  it('should throw error when body is empty (no title)', async () => {
+    const dto = {}
+    const createTaskDto = plainToInstance(CreateTaskDto, dto)
+
+    await expect(validateOrReject(createTaskDto)).rejects.toBeDefined()
+  })
 
   it("should return all tasks", () => {
     service.create({ title: "Task 1" })
