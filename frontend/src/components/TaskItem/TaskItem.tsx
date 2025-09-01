@@ -4,10 +4,11 @@ interface TaskItemProps {
     task: Task
 }
 
-export default function TaskItem({ task }: TaskItemProps) {
+export default function TaskItem({ task, onMarkAsDone }: TaskItemProps) {
     return (
         <li>
-            <span>{task.title}</span>
+            {task.title}
+            <button onClick={() => onMarkAsDone(task.id)}>Feito</button>
         </li>
     )
 }
