@@ -2,7 +2,7 @@ import type { Task } from "../../types/Task"
 
 interface TaskItemProps {
     task: Task
-    onMarkAsDone: (id: string) => void  // <--- aqui!
+    onMarkAsDone: (id: string) => void
 
 }
 
