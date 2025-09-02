@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { createTask, getTasks, markTaskAsDone } from '../components/api/apiConfig'
 import type { Task } from '../types/Task'
 import toast from 'react-hot-toast'
-
 export function useTasks() {
     const [tasks, setTasks] = useState<Task[]>([])
     const [loading, setLoading] = useState(true)
@@ -31,7 +30,17 @@ export function useTasks() {
     }
 
     const handleSearch = (query: string) => {
-        setSearch(query)
+        const filteredTasks =
+            tasks.filter(task =>
+                task.title.toLowerCase().includes(query.toLowerCase())
+            )
+        if (filteredTasks.length) {
+            setSearch(query)
+            setIsFfiltered(true)
+        } else {
+            toast.error("Tarefa não encontrada")
+            setSearch("")
+        }
     }
 
     return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered, search }

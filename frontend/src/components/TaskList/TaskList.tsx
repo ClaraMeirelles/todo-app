@@ -16,3 +16,4 @@ export default function TaskList({ tasks, toggleTask, search }: TaskListProps) {
         </ul>
     )
 }
+
