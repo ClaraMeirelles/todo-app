@@ -56,6 +56,9 @@ form button {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s ease;
+  min-width: 7vw;
+  max-width: 80px;
+
 }
 
 form button:hover {
@@ -86,7 +89,8 @@ ul {
 .task-item.done {
   text-decoration: line-through;
   color: #888;
-  background: #e6ffe6;
+  background: #434a8342;
+  /* e6ffe6 */
 }
 
 .task-item button {

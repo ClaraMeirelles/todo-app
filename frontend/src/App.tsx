@@ -2,6 +2,7 @@ import { Form } from "./components/Form/Form"
 import TaskList from "./components/TaskList/TaskList"
 import { useTasks } from "./hooks/useTasks"
 import './App.css'
+import { Toaster } from "react-hot-toast"
 
 function App() {
   const { tasks, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered } = useTasks()
@@ -11,7 +12,7 @@ function App() {
       <Form
         onSubmit={handleAddTask}
         placeholder="Digite aqui..."
-        buttonLabel="Enviar"
+        buttonLabel="Criar"
         initialValue="" />
       <section>
         <Form
@@ -22,6 +23,7 @@ function App() {
         {isFiltered && <button onClick={requestTasks}>Ver todas as tarefas</button>}
         <TaskList tasks={tasks} onMarkAsDone={handleMarkAsDone} />
       </section>
+      <Toaster position="top-center" />
     </main>
   )
 }

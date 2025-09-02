@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createTask, getTasks, markTaskAsDone } from '../components/api/apiConfig'
 import type { Task } from '../types/Task'
+import toast from 'react-hot-toast'
 
 export function useTasks() {
     const [tasks, setTasks] = useState<Task[]>([])
@@ -12,7 +13,6 @@ export function useTasks() {
 
     const requestTasks = () => {
         getTasks().then(data => {
-            console.log("CHAMOU")
             setTasks(data)
             setLoading(false)
         })
@@ -38,7 +38,7 @@ export function useTasks() {
             setTasks(filteredTasks)
             setIsFfiltered(true)
         } else {
-            window.alert("tarefa não encontrada")
+            toast.error("Tarefa não encontrada")
         }
     }
 
