@@ -1,6 +1,7 @@
 import { Form } from "./components/Form/Form"
 import TaskList from "./components/TaskList/TaskList"
 import { useTasks } from "./hooks/useTasks"
+import './App.css'
 
 function App() {
   const { tasks, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered } = useTasks()

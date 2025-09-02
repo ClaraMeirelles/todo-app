@@ -30,8 +30,6 @@ export function useTasks() {
     }
 
     const handleSearch = (query: string) => {
-        // requestTasks()
-        // if (query.trim()) {
         const filteredTasks =
             tasks.filter(task =>
                 task.title.toLowerCase().includes(query.toLowerCase())
@@ -42,8 +40,6 @@ export function useTasks() {
         } else {
             window.alert("tarefa não encontrada")
         }
-
-        // }
     }
 
     return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered }

@@ -9,9 +9,10 @@ interface TaskItemProps {
 export default function TaskItem({ task, onMarkAsDone }: TaskItemProps) {
     console.log(task.completed, task)
     return (
-        <li>
+        <li className={`task-item ${task.completed ? "done" : ""}`} >
             {task.title}
-            <button onClick={() => onMarkAsDone(task.id)}>{task.completed ? "feito" : "Marcar Feito"}</button>
-        </li>
+            < button onClick={() => onMarkAsDone(task.id)
+            }> {task.completed ? "feito" : "Marcar Feito"}</ button>
+        </li >
     )
 }
