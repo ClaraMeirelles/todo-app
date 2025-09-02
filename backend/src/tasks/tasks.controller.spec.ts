@@ -2,6 +2,9 @@ import { Test, type TestingModule } from "@nestjs/testing"
 import { NotFoundException } from "@nestjs/common"
 import { TasksService } from "./tasks.service"
 import { TasksController } from "./tasks.controller"
+import { plainToInstance } from "class-transformer"
+import { CreateTaskDto } from "./dto/create-task.dto"
+import { validateOrReject } from "class-validator"
 
 describe("TasksService", () => {
   let service: TasksService
@@ -27,6 +30,20 @@ describe("TasksService", () => {
     expect(task.title).toBe("Test task")
     expect(task.completed).toBe(false)
     expect(task.id).toBeDefined()
+  })
+
+  it('should throw error when creating task without title', async () => {
+    const dto = { title: '' }
+    const createTaskDto = plainToInstance(CreateTaskDto, dto)
+
+    await expect(validateOrReject(createTaskDto)).rejects.toBeDefined()
+  })
+
+  it('should throw error when body is empty (no title)', async () => {
+    const dto = {}
+    const createTaskDto = plainToInstance(CreateTaskDto, dto)
+
+    await expect(validateOrReject(createTaskDto)).rejects.toBeDefined()
   })
 
   it("should return all tasks", () => {
