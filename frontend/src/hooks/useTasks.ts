@@ -7,12 +7,16 @@ export function useTasks() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        requestTasks()
+    }, [])
+
+    const requestTasks = () => {
         getTasks().then(data => {
+            console.log("CHAMOU")
             setTasks(data)
             setLoading(false)
         })
-    }, [])
-
+    }
     const handleAddTask = async (title: string) => {
         if (!title.trim()) return
         const newTask = await createTask(title)
@@ -24,5 +28,22 @@ export function useTasks() {
         setTasks(prev => prev.map(t => (t.id === id ? updated : t)))
     }
 
-    return { tasks, loading, handleAddTask, handleMarkAsDone }
+    const handleSearch = (query: string) => {
+        if (!query.trim()) {
+            requestTasks()
+        } else {
+            const filteredTasks =
+                tasks.filter(task =>
+                    task.title.toLowerCase().includes(query.toLowerCase())
+                )
+            if (filteredTasks.length) {
+                setTasks(filteredTasks)
+            } else {
+                window.alert("tarefa não encontrada")
+            }
+
+        }
+    }
+
+    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks }
 }
