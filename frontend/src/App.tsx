@@ -5,7 +5,16 @@ import './App.css'
 import { Toaster } from "react-hot-toast"
 
 function App() {
-  const { tasks, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered } = useTasks()
+  const {
+    tasks,
+    handleAddTask,
+    handleMarkAsDone,
+    handleSearch,
+    requestTasks,
+    isFiltered,
+    search
+  } = useTasks()
+
   return (
     <main>
       <h1>To-Do App</h1>
@@ -21,7 +30,10 @@ function App() {
           buttonLabel="Buscar"
         />
         {isFiltered && <button onClick={requestTasks}>Ver todas as tarefas</button>}
-        <TaskList tasks={tasks} toggleTask={handleMarkAsDone} />
+        <TaskList
+          tasks={tasks}
+          toggleTask={handleMarkAsDone}
+          search={search} />
       </section>
       <Toaster position="top-center" />
     </main>

@@ -7,6 +7,7 @@ export function useTasks() {
     const [tasks, setTasks] = useState<Task[]>([])
     const [loading, setLoading] = useState(true)
     const [isFiltered, setIsFfiltered] = useState(false)
+    const [search, setSearch] = useState("")
     useEffect(() => {
         requestTasks()
     }, [])
@@ -30,17 +31,8 @@ export function useTasks() {
     }
 
     const handleSearch = (query: string) => {
-        const filteredTasks =
-            tasks.filter(task =>
-                task.title.toLowerCase().includes(query.toLowerCase())
-            )
-        if (filteredTasks.length) {
-            setTasks(filteredTasks)
-            setIsFfiltered(true)
-        } else {
-            toast.error("Tarefa não encontrada")
-        }
+        setSearch(query)
     }
 
-    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered }
+    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered, search }
 }
