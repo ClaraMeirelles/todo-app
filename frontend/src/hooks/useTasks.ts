@@ -5,7 +5,7 @@ import type { Task } from '../types/Task'
 export function useTasks() {
     const [tasks, setTasks] = useState<Task[]>([])
     const [loading, setLoading] = useState(true)
-
+    const [isFiltered, setIsFfiltered] = useState(false)
     useEffect(() => {
         requestTasks()
     }, [])
@@ -16,6 +16,7 @@ export function useTasks() {
             setTasks(data)
             setLoading(false)
         })
+        setIsFfiltered(false)
     }
     const handleAddTask = async (title: string) => {
         if (!title.trim()) return
@@ -29,21 +30,21 @@ export function useTasks() {
     }
 
     const handleSearch = (query: string) => {
-        if (!query.trim()) {
-            requestTasks()
+        // requestTasks()
+        // if (query.trim()) {
+        const filteredTasks =
+            tasks.filter(task =>
+                task.title.toLowerCase().includes(query.toLowerCase())
+            )
+        if (filteredTasks.length) {
+            setTasks(filteredTasks)
+            setIsFfiltered(true)
         } else {
-            const filteredTasks =
-                tasks.filter(task =>
-                    task.title.toLowerCase().includes(query.toLowerCase())
-                )
-            if (filteredTasks.length) {
-                setTasks(filteredTasks)
-            } else {
-                window.alert("tarefa não encontrada")
-            }
-
+            window.alert("tarefa não encontrada")
         }
+
+        // }
     }
 
-    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks }
+    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered }
 }

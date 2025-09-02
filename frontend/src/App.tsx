@@ -3,10 +3,7 @@ import TaskList from "./components/TaskList/TaskList"
 import { useTasks } from "./hooks/useTasks"
 
 function App() {
-  const { tasks, handleAddTask, handleMarkAsDone, handleSearch, requestTasks } = useTasks()
-
-
-
+  const { tasks, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered } = useTasks()
   return (
     <main>
       <h1>To-Do App</h1>
@@ -21,8 +18,8 @@ function App() {
           placeholder="Buscar tarefa..."
           buttonLabel="Buscar"
         />
+        {isFiltered && <button onClick={requestTasks}>Ver todas as tarefas</button>}
         <TaskList tasks={tasks} onMarkAsDone={handleMarkAsDone} />
-        <button onClick={requestTasks}>Ver todas as tarefas</button>
       </section>
     </main>
   )
