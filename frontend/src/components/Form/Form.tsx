@@ -1,28 +1,36 @@
 import React, { useState } from "react"
 
-interface FormProps {
-    onAddTask: (title: string) => void
+interface InputFormProps {
+    onSubmit: (value: string) => void
+    placeholder?: string
+    buttonLabel?: string
+    initialValue?: string
 }
 
-export function Form({ onAddTask }: FormProps) {
-    const [title, setTitle] = useState("")
+export function Form({
+    onSubmit,
+    placeholder = "Digite aqui...",
+    buttonLabel = "Enviar",
+    initialValue = ""
+}: InputFormProps) {
+    const [value, setValue] = useState(initialValue)
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        if (!title.trim()) return
-        onAddTask(title)
-        setTitle("")
+        if (!value.trim()) return
+        onSubmit(value)
+        setValue("")
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Nova tarefa"
+                value={value}
+                onChange={e => setValue(e.target.value)}
+                placeholder={placeholder}
             />
-            <button type="submit">Adicionar</button>
+            {buttonLabel && <button type="submit">{buttonLabel}</button>}
         </form>
     )
 }
