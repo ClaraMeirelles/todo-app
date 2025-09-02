@@ -17,9 +17,9 @@ export class TasksController {
     }
 
     @Patch(':id/done')
-    markAsDone(@Request() req): Task {
+    updateDone(@Request() req): Task {
         const id = req.params.id;
-        return this.tasksService.markAsDone(id);
+        return this.tasksService.updateDone(id);
     }
 
 }
