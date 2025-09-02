@@ -21,7 +21,7 @@ function App() {
           buttonLabel="Buscar"
         />
         {isFiltered && <button onClick={requestTasks}>Ver todas as tarefas</button>}
-        <TaskList tasks={tasks} onMarkAsDone={handleMarkAsDone} />
+        <TaskList tasks={tasks} toggleTask={handleMarkAsDone} />
       </section>
       <Toaster position="top-center" />
     </main>

@@ -32,7 +32,7 @@ form {
   margin-bottom: 1.5rem;
 }
 
-form input {
+input {
   padding: 0.6rem 1rem;
   border: 1px solid #174EA6;
   border-radius: 6px;
@@ -41,7 +41,7 @@ form input {
   color: #0A2A66;
 }
 
-form input:focus {
+input:focus {
   outline: none;
   border-color: #0A2A66;
   box-shadow: 0 0 4px rgba(10, 42, 102, 0.3);
@@ -80,30 +80,16 @@ ul {
   margin-bottom: 0.5rem;
   background: #fff;
   transition: 0.2s;
+
 }
 
 .task-item:hover {
   background: #f0f4ff;
+  border-color: #0A2A66;
 }
 
 .task-item.done {
   text-decoration: line-through;
   color: #888;
   background: #434a8342;
-  /* e6ffe6 */
-}
-
-.task-item button {
-  background: #174EA6;
-  border: none;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #fff;
-  transition: background 0.2s;
-}
-
-.task-item button:hover {
-  background: #0A2A66;
 }

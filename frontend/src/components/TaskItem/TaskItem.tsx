@@ -2,17 +2,20 @@ import type { Task } from "../../types/Task"
 
 interface TaskItemProps {
     task: Task
-    onMarkAsDone: (id: string) => void
+    toggleTask: (id: string) => void
 
 }
 
-export default function TaskItem({ task, onMarkAsDone }: TaskItemProps) {
+export default function TaskItem({ task, toggleTask }: TaskItemProps) {
     console.log(task.completed, task)
     return (
         <li className={`task-item ${task.completed ? "done" : ""}`} >
             {task.title}
-            < button onClick={() => onMarkAsDone(task.id)
-            }> {task.completed ? "feito" : "Marcar Feito"}</ button>
+            <input
+                type="checkbox"
+                checked={task.completed}
+                onChange={() => toggleTask(task.id)}
+            />
         </li >
     )
 }
