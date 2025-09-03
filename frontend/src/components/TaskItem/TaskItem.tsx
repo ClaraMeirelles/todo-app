@@ -7,7 +7,6 @@ interface TaskItemProps {
 }
 
 export default function TaskItem({ task, toggleTask }: TaskItemProps) {
-    console.log(task.completed, task)
     return (
         <li className={`task-item ${task.completed ? "done" : ""}`} >
             {task.title}
