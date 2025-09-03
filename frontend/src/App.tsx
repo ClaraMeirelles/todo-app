@@ -10,7 +10,6 @@ function App() {
     handleAddTask,
     toggleTask,
     handleSearch,
-    requestTasks,
     isFiltered,
     search
   } = useTasks()
