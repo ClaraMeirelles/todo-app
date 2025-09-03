@@ -18,13 +18,14 @@ export function useTasks() {
         })
         setIsFfiltered(false)
     }
+
     const handleAddTask = async (title: string) => {
         if (!title.trim()) return
         const newTask = await createTask(title)
         setTasks(prev => [...prev, newTask])
     }
 
-    const handleMarkAsDone = async (id: string) => {
+    const toggleTask = async (id: string) => {
         const updated = await markTaskAsDone(id)
         setTasks(prev => prev.map(t => (t.id === id ? updated : t)))
     }
@@ -43,5 +44,5 @@ export function useTasks() {
         }
     }
 
-    return { tasks, loading, handleAddTask, handleMarkAsDone, handleSearch, requestTasks, isFiltered, search }
+    return { tasks, loading, handleAddTask, toggleTask, handleSearch, requestTasks, isFiltered, search }
 }

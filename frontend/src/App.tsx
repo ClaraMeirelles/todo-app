@@ -8,7 +8,7 @@ function App() {
   const {
     tasks,
     handleAddTask,
-    handleMarkAsDone,
+    toggleTask,
     handleSearch,
     requestTasks,
     isFiltered,
@@ -32,7 +32,7 @@ function App() {
         {isFiltered && <button onClick={() => handleSearch("")}>Ver todas as tarefas</button>}
         <TaskList
           tasks={tasks}
-          toggleTask={handleMarkAsDone}
+          toggleTask={toggleTask}
           search={search} />
       </section>
       <Toaster position="top-center" />
