@@ -29,7 +29,7 @@ function App() {
           placeholder="Buscar tarefa..."
           buttonLabel="Buscar"
         />
-        {isFiltered && <button onClick={requestTasks}>Ver todas as tarefas</button>}
+        {isFiltered && <button onClick={() => handleSearch("")}>Ver todas as tarefas</button>}
         <TaskList
           tasks={tasks}
           toggleTask={handleMarkAsDone}
