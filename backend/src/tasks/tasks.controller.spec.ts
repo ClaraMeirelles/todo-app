@@ -56,7 +56,7 @@ describe("TasksService", () => {
 
   it("should mark task as done", () => {
     const task = service.create({ title: "Test task" })
-    const updatedTask = service.markAsDone(task.id)
+    const updatedTask = service.updateDone(task.id)
 
     expect(updatedTask.completed).toBe(true)
     expect(updatedTask.updatedAt).toBeDefined()
@@ -64,7 +64,7 @@ describe("TasksService", () => {
 
   it("should throw NotFoundException when marking non-existent task as done", () => {
     expect(() => {
-      service.markAsDone("random-id")
+      service.updateDone("random-id")
     }).toThrow(NotFoundException)
   })
 })

@@ -21,12 +21,12 @@ export class TasksService {
         return task;
     }
 
-    markAsDone(id: string): Task {
+    updateDone(id: string): Task {
         const task = this.tasks.find(t => t.id === id);
         if (!task) {
             throw new NotFoundException('Tarefa não encontrada');
         }
-        task.completed = true;
+        task.completed = !task.completed;
         task.updatedAt = new Date();
         return task;
     }
