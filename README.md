@@ -90,7 +90,7 @@ todo-app/
 * O projeto está empacotado para rodar em qualquer ambiente com Docker instalado.  
 
 
-## 💡 Autor(a)
+## 💡 Autora
 
 Feito por Clara Meirelles
 
