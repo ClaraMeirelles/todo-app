@@ -88,3 +88,11 @@ todo-app/
 * O frontend é servido via Nginx após build com Vite.  
 * O backend roda em Node 22 com NestJS em modo produção.  
 * O projeto está empacotado para rodar em qualquer ambiente com Docker instalado.  
+
+
+## 💡 Autor(a)
+
+Feito por Clara Meirelles
+
+GitHub: [github.com/ClaraMeirelles](https://github.com/ClaraMeirelles)  
+LinkedIn: [linkedin.com/in/clara-meirelles](https://linkedin.com/in/clara-meirelles)
